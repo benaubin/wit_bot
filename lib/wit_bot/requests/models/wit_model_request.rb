@@ -12,7 +12,7 @@ module WitBot
       @model = model
     end
 
-    def get(all: true)
+    def get(all: false)
       path = all ? model_path : individual_model_path
       request http.get path
     end
