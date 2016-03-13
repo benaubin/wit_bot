@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "wit_bot"
+require_relative '../lib/wit_bot'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+WitBot.configure do |c|
+  c.token = ENV['WIT_ACCESS_TOKEN'] # Create a wit bot and set the token here
+end
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+def reload!
+  WitBot.load
+end
 
 require "irb"
 IRB.start
