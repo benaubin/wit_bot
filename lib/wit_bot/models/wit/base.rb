@@ -78,6 +78,7 @@ module WitBot
           h[v] = self.send v if self.send v
         end
       end
+      alias :to_hash :to_h
       alias :as_json :to_h
 
       def from_response_data(response, method=caller[0])

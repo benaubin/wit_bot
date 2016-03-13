@@ -33,7 +33,7 @@ module WitBot
       end
 
       def process_meta(meta)
-        IntentMeta.new meta
+        IntentMeta.new **meta.symbolize_keys
       end
 
       def process_create_response(response)

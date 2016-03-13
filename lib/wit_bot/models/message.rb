@@ -17,7 +17,7 @@ module WitBot
         msg_id: id,
         thread_id: thread.id
       }
-      params[:context] = thread.context unless thread.context.empty?
+      params[:context] = JSON.dump thread.context.as_json unless thread.context.empty?
       p ? params.merge(p) : params
     end
 
