@@ -45,13 +45,31 @@ def output_outcome(outcome, gen_pretty=false)
   end
 end
 
+message = nil
+
 if repl
   begin
     puts 'Starting Wit REPL:'
     loop do
-      print "wit > "
+      print 'wit > '
 
       input = gets.chomp
+
+      if input.sub! /^!/, 'message'
+        if input.sub! /(^message)(.)/, '\1.\2'
+          if input.sub! /(^message\.)!/, '\1outcome'
+            input.sub! /(^message\.outcome)(.)/, '\1.\2'
+          end
+        end
+        begin
+          puts "  > #{input}:"
+          output_outcome eval(input)
+        rescue StandardError => e
+          puts "Caught: #{e.message}"
+        ensure
+          next
+        end
+      end
 
       message = thread.create_message input
       message.send
@@ -59,7 +77,7 @@ if repl
       output_outcome message.outcome, true
     end
   rescue Interrupt
-    puts 'Exitting...'
+    puts "\nExiting..."
     exit 0
   end
 else
