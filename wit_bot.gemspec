@@ -11,11 +11,11 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A better wit.ai client for Ruby. Written in Ruby.}
   spec.description   = `cat README.md`
-  spec.homepage      = 'bensites.com/wit_bot'
+  spec.homepage      = 'http://bensites.com/wit_bot'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = ['bin/wit']
+  spec.executables   = ['wit']
   spec.require_paths = ['lib']
 
   spec.add_development_dependency "bundler", "~> 1.11"
