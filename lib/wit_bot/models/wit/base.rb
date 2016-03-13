@@ -18,7 +18,11 @@ module WitBot
 
       class << self
         def all
-          @all ||= REQUEST.new.get.map{|data| from_response_data data}
+          @all ||= request.get(all: true).map do |data|
+            model = self.new data[:id]
+            model.from_response_data data
+            model
+          end
         end
 
         def get(model: nil)
