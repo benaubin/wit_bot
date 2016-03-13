@@ -7,20 +7,18 @@ WitBot.configure do |c|
   c.token = ENV['WIT_ACCESS_TOKEN'] # Create a wit bot and set the token here
 end
 
-thread = WitBot.thread
+thread = WitBot.thread # Create a new thread
 
-message = thread.create_message 'This is a cool test'
+message = thread.create_message 'This is a cool test' # Create a normal message
 
-message.send
+message.send # Send that normal message
 
-thread.context.state = 'how_cold'
+thread.context.state = 'how_cold' # Set the state to ask the user how cold the test really is.
 
-message = thread.create_message '32 degrees'
+message = thread.create_message '32 degrees' # Create a message on the thread
 
-message
+message.send # Send the message
 
-message.send
+outcome = message.outcome # Get the outcome
 
-outcome = message.outcome
-
-ap outcome, {raw: true}
+ap outcome, {raw: true} # Print the outcome
