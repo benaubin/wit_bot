@@ -43,6 +43,10 @@ module WitBot
       def request
         IntentsRequest.new(model: self)
       end
+
+      def self.request
+        IntentsRequest.new
+      end
     end
   end
 end

@@ -35,6 +35,10 @@ module WitBot
       def request
         EntitiesRequest.new(model: self)
       end
+
+      def self.request
+        EntitiesRequest.new
+      end
     end
   end
 end
