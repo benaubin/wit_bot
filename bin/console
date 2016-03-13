@@ -2,12 +2,15 @@
 
 require_relative '../lib/wit_bot'
 
+include WitBot
+
 WitBot.configure do |c|
   c.token = ENV['WIT_ACCESS_TOKEN'] # Create a wit bot and set the token here
 end
 
 def reload!
   WitBot.load
+  include WitBot
 end
 
 require "irb"
