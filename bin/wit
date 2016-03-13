@@ -3,7 +3,7 @@
 require 'awesome_print'
 require 'optparse'
 require 'json'
-require_relative '../lib/wit_bot'
+require 'wit_bot'
 
 access_token = ENV['WIT_ACCESS_TOKEN']
 repl = true
