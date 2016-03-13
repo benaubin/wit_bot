@@ -9,7 +9,7 @@ end
 
 thread = WitBot.thread # Create a new thread
 
-message = thread.create_message 'This is a cool test' # Create a normal message
+message = thread.create_message 'This is a cool test' # Create a normal message on the thread
 
 message.send # Send that normal message
 
