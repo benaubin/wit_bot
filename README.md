@@ -36,42 +36,42 @@ or use programmatically
 
 1. Configure WitBot with your access token:
 
-```ruby
-WitBot.configure do |c|
-  c.token = ENV['WIT_AI_TOKEN']
-end
-```
+    ```ruby
+    WitBot.configure do |c|
+      c.token = ENV['WIT_AI_TOKEN']
+    end
+    ```
 
 2. Create a message:
 
-```ruby
-message = WitBot.create_message 'This is a cool test'
-```
+    ```ruby
+    message = WitBot.create_message 'This is a cool test'
+    ```
 
 3. And send it:
 
-```ruby
-message.send
-```
+    ```ruby
+    message.send
+    ```
 
 4. Get the outcome:
 
-```ruby
-outcome = message.outcome
-```
+    ```ruby
+    outcome = message.outcome
+    ```
 
 5. Get the intent and the entities:
 
-```ruby
-intent = outcome.intent #=> WitBot::WitModel::Intent
-entities = outcome.entities #=> {role => #<WitBot::WitModel::Entity>}
-```
+    ```ruby
+    intent = outcome.intent #=> WitBot::WitModel::Intent
+    entities = outcome.entities #=> {role => #<WitBot::WitModel::Entity>}
+    ```
 
 6. Get the intent name:
 
-```ruby
-intent.name #=> "Test"
-```
+    ```ruby
+    intent.name #=> "Test"
+    ```
 
 More information on the [GitHub wiki][wiki].
 
@@ -83,12 +83,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/wit_bot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/penne12/wit_bot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License].
 
 [wit.ai]: https://wit.ai/
-[wiki]: wiki
+[wiki]: https://github.com/penne12/wit_bot/wiki
+[MIT License]: http://opensource.org/licenses/MIT
