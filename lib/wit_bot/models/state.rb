@@ -7,11 +7,14 @@ module WitBot
 
     def initialize(state)
       @state = state
-      @@states[state] = self
     end
 
     def self.find(state)
-      @@states[state] || State.new(state)
+      @@states[state] ||= State.new(state)
+    end
+
+    def self.all
+      @@states.values
     end
 
     alias :to_s :state
