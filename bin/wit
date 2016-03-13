@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+
+require 'awesome_print'
+require 'optparse'
+require 'json'
+require_relative '../lib/wit_bot'
+
+access_token = ENV['WIT_ACCESS_TOKEN']
+repl = true
+$output = :ap
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: wit [options]'
+
+  opts.on('-t', '--token TOKEN', 'Access Token') { |v| access_token = v }
+  opts.on('-i', '--input', "Don't start a REPL - read from standard input.") { |v| repl = !v }
+  opts.on('-j', '--json', 'Respond with raw json') { |v| $output = :json if v }
+end.parse!
+
+unless access_token
+  puts <<-EOS
+    An access token was not provided.
+    Please restart the Wit REPL with an access token:
+
+        wit -t [access_token]
+
+    or with the ENV var WIT_ACCESS_TOKEN
+  EOS
+
+  exit 1
+end
+
+
+WitBot.configure do |c|
+  c.token = access_token
+end
+
+thread = WitBot.thread
+
+def output_outcome(outcome)
+  if $output == :json
+    puts JSON.dump outcome.raw
+  else
+    ap outcome, {raw: true}
+  end
+end
+
+if repl
+  begin
+    puts 'Starting Wit REPL:'
+    loop.each_with_index do |i|
+      print "wit:#{i}> "
+
+      input = gets.chomp
+
+      message = thread.create_message input
+      message.send
+
+      output_outcome message.outcome
+    end
+  rescue Interrupt
+    puts 'Exitting...'
+    exit 0
+  end
+else
+  ARGV.clear
+
+  ARGF.each do |line|
+    message = thread.create_message line.chomp
+    message.send
+
+    output_outcome message.outcome
+  end
+end
