@@ -4,29 +4,25 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'wit_bot/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "wit_bot"
+  spec.name          = 'wit_bot'
   spec.version       = WitBot::VERSION
-  spec.authors       = ["Ben!"]
-  spec.email         = ["ben@bensites.com"]
+  spec.authors       = ['Ben (@penne12_)']
+  spec.email         = ['ben@bensites.com']
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  spec.summary       = %q{A better wit.ai client for Ruby. Written in Ruby.}
+  spec.description   = `cat README.md`
+  spec.homepage      = 'bensites.com/wit_bot'
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.executables   = ['bin/wit']
+  spec.require_paths = ['lib']
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.add_dependency "http", "~> 1.0.2"
+  spec.add_dependency "activesupport", "~> 4.2.6"
+  spec.add_dependency "require_all", "~> 1.3.3"
+  spec.add_dependency "awesome_print", "~> 1.6.1"
 end

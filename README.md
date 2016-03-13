@@ -1,8 +1,6 @@
 # WitBot
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wit_bot`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A better [wit.ai] client for Ruby. Written in Ruby.
 
 ## Installation
 
@@ -22,7 +20,60 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Start a REPL:
+
+```bash
+$ wit
+```
+
+or use with STDIO
+
+```bash
+$ wit --input --json
+```
+
+or use programmatically
+
+1. Configure WitBot with your access token:
+
+```ruby
+WitBot.configure do |c|
+  c.token = ENV['WIT_AI_TOKEN']
+end
+```
+
+2. Create a message:
+
+```ruby
+message = WitBot.create_message 'This is a cool test'
+```
+
+3. And send it:
+
+```ruby
+message.send
+```
+
+4. Get the outcome:
+
+```ruby
+outcome = message.outcome
+```
+
+5. Get the intent and the entities:
+
+```ruby
+intent = outcome.intent #=> WitBot::WitModel::Intent
+entities = outcome.entities #=> {role => #<WitBot::WitModel::Entity>}
+```
+
+6. Get the intent name:
+
+```ruby
+intent.name #=> "Test"
+```
+
+More information on the [GitHub wiki][wiki].
 
 ## Development
 
@@ -39,3 +90,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+[wit.ai]: https://wit.ai/
+[wiki]: wiki
