@@ -11,6 +11,10 @@ module WitBot
       @outcomes = @_outcomes = nil
     end
 
+    def bot?
+      false
+    end
+
     def params(p=nil)
       params = {
         q: text,
@@ -25,7 +29,7 @@ module WitBot
       response = MessageRequest.new.request(self, n)
 
       @sent = true
-      message.thread.reset_context unless keep_context
+      thread.reset_context unless keep_context
 
       @_text = response['_text']
       @_outcomes = response['outcomes']
