@@ -1,6 +1,8 @@
 # WitBot
 
-A better [wit.ai] client for Ruby. Written in Ruby.
+A better [wit.ai] client for Ruby. Written in Ruby. With an api for creating bots. 
+
+Pretty Awesome™
 
 ## Installation
 

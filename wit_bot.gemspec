@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ben (@penne12_)']
   spec.email         = ['ben@bensites.com']
 
-  spec.summary       = %q{A better wit.ai client for Ruby. Written in Ruby.}
-  spec.description   = `cat README.md`
+  spec.summary       = %q{A better wit.ai client for Ruby. Written in Ruby. With an api for creating bots.}
+  spec.description   = %q{A better [wit.ai] client for Ruby. Written in Ruby. With an api for creating bots. It's Pretty Awesome™}
   spec.homepage      = 'http://bensites.com/wit_bot'
   spec.license       = 'MIT'
 
