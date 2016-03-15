@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['ben@bensites.com']
 
   spec.summary       = %q{A better wit.ai client for Ruby. Written in Ruby. With an api for creating bots.}
-  spec.description   = %q{A better [wit.ai] client for Ruby. Written in Ruby. With an api for creating bots. It's Pretty Awesome™}
+  spec.description   = %q{A better wit.ai client for Ruby. Written in Ruby. With an api for creating bots. It's Pretty Awesome™}
   spec.homepage      = 'http://bensites.com/wit_bot'
   spec.license       = 'MIT'
 
@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_dependency "http", "~> 1.0.2"
-  spec.add_dependency "activesupport", "~> 4.2.6"
+  spec.add_dependency "activesupport", ">= 4"
   spec.add_dependency "require_all", "~> 1.3.3"
   spec.add_dependency "awesome_print", "~> 1.6.1"
 end
