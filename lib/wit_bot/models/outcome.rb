@@ -19,7 +19,7 @@ module WitBot
 
         entities[role] = data
         entities
-      end
+      end.with_indifferent_access
 
       raise LowConfidenceError self if i == 0 && low_confidence?
     end
