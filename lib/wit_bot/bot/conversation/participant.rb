@@ -8,12 +8,18 @@ module WitBot
           @conversation = conversation
           @conversation.add_observer self
         end
+
         def bot?
           true
         end
-        def output(text)
+
+        def send_message(text)
           @conversation.send_message text, self
         end
+        
+        # Alias is deprecated.
+        alias :output :send_message
+
         def update(type, message)
           case type
             when :input

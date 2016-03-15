@@ -18,10 +18,10 @@ class Bot < WitBot::Bot::Base
 
   def login(outcome)
     if (pin_code = outcome.entities[:pin_code])
-      output "Logged you in with the pin code: #{pin_code}"
+      send_message "Logged you in with the pin code: #{pin_code}"
     else
       conversation.thread.context.state << :missing_pin
-      output 'Please include a pin code.'
+      send_message 'Please include a pin code.'
     end
   end
 
@@ -33,6 +33,6 @@ class Bot < WitBot::Bot::Base
 
     msg = "Yup, that #{thing || 'thing'} is #{adjective || 'a word'}."
 
-    output msg
+    send_message msg
   end
 end
