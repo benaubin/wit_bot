@@ -14,4 +14,8 @@ def reload!
 end
 
 require "irb"
+
+require "awesome_print"
+AwesomePrint.irb!
+
 IRB.start
