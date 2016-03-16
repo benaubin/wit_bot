@@ -5,10 +5,10 @@ module WitBot
     end
 
     def request(request=http)
+      response = process_response request.parse
       if request.code.between? 200, 299
-        process_response request.parse
+        response
       else
-        response = request.parse.with_indifferent_access
         raise WitError.new(response[:status]), (response[:error] || response[:body])
       end
     end
@@ -17,7 +17,7 @@ module WitBot
     def process_response(response)
       if response.respond_to? :with_indifferent_access
         response.with_indifferent_access
-      elsif response.respond_to? :map
+      elsif response.is_a? Array
         response.map {|r| process_response r}
       else
         response
