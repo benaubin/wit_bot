@@ -1,13 +1,4 @@
-#!/usr/bin/env ruby
-
-require 'awesome_print'
-require 'wit_bot'
-
-WitBot.configure do |c|
-  c.token = ENV['WIT_ACCESS_TOKEN'] # Create a wit bot and set the token here
-end
-
-thread = WitBot.thread # Create a new thread
+require_relative 'helpers/helpers'
 
 message = thread.create_message 'This is a cool test' # Create a normal message on the thread
 

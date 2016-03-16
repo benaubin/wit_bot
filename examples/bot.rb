@@ -1,12 +1,5 @@
-#require 'wit_bot'
-
-require_relative '../lib/wit_bot'
-
+require_relative 'helpers/helpers'
 require_relative 'bot/bot'
-
-WitBot.configure do |c|
-  c.token = ENV['WIT_ACCESS_TOKEN'] # Create a wit bot and set the token here
-end
 
 conversation = WitBot::Bot::Conversation::Base.new
 
