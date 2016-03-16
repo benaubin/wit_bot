@@ -16,5 +16,6 @@ module WitBot
     def to_h
       {value: value, expressions: expressions}
     end
+    alias :to_hash :to_h
   end
 end
