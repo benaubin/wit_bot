@@ -1,7 +1,4 @@
-require 'active_support/core_ext/hash/indifferent_access'
-require 'active_support/core_ext/module/attribute_accessors'
-require 'active_support/ordered_hash'
-require 'active_support/concern'
+require 'active_support/all'
 require 'http'
 require 'require_all'
 require 'observer'
