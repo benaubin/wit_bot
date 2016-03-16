@@ -8,6 +8,7 @@ module WitBot
       @id = id
       @messages = ActiveSupport::OrderedHash.new
       @bot_messages = ActiveSupport::OrderedHash.new
+      @metadata = nil
     end
 
     def message(id)
@@ -34,6 +35,32 @@ module WitBot
 
     def reset_context
       @context = Context.new
+    end
+
+    def to_hash
+      {
+        id: @id,
+        context: @context,
+        messages: {
+          bot: @bot_messages,
+          user: @messages
+        },
+        metadata: @metadata
+      }
+    end
+
+    def from_hash(json)
+      m = json[:messages]
+      @messages = WitBot::Message.many_from_hash(self, m[:user])
+      @bot_messages = WitBot::Message.many_from_hash(self, m[:bot])
+
+      @context = Context.from_hash json[:context]
+      @metadata = json[:metadata]
+      self
+    end
+
+    def self.from_hash(json)
+      self.new(json[:id]).from_hash json
     end
   end
 end

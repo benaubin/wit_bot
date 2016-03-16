@@ -15,6 +15,32 @@ module WitBot
       false
     end
 
+    def to_hash
+      {
+        text: @text,
+        _text: @_text,
+        id: @id,
+        bot: bot?,
+        sent: @sent,
+        _outcomes: @_outcomes
+      }
+    end
+
+    def from_hash(json)
+      @_text = json[:_text]
+      @sent = json[:sent]
+      @_outcomes = json[:_outcomes]
+      parse_outcomes!
+      self
+    end
+    def self.from_hash(thread, id, json)
+      return Bot::Message.from_hash thread, id, json if json[:bot]
+      self.new(thread, json[:text], id: id).from_hash json
+    end
+    def self.many_from_hash(thread, json)
+      json.inject({}) { |h, (id, message)| h[id] = self.from_hash thread, id, message; h }
+    end
+
     def params(p=nil)
       params = {
         q: text,
@@ -33,9 +59,18 @@ module WitBot
 
       @_text = response['_text']
       @_outcomes = response['outcomes']
-      @outcomes = @_outcomes.each_with_index.map { |outcome, i| Outcome.new self, outcome, i }
+
+      parse_outcomes!
 
       self
+    end
+
+    def parse_outcomes(outcomes=@_outcomes)
+      outcomes.each_with_index.map { |outcome, i| Outcome.new self, outcome, i }
+    end
+
+    def parse_outcomes!(outcomes=@_outcomes)
+      @outcomes = parse_outcomes outcomes
     end
 
     def outcome

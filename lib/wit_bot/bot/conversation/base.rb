@@ -38,6 +38,21 @@ module WitBot
           notify_observers :output, message
           message
         end
+
+        def to_hash
+          {
+            thread: @thread
+          }
+        end
+
+        def from_hash(json)
+          @thread = WitBot::MessageThread.from_hash json[:thread]
+          self
+        end
+
+        def self.from_hash(json)
+          self.new.from_hash json.with_indifferent_access
+        end
       end
     end
   end

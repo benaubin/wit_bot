@@ -9,10 +9,19 @@ module WitBot
     def []=(entity, value, expressions=[value])
       @hash[entity] = value.is_a?(EntityValue) ? value : EntityValue.new(value, expressions)
     end
-    def as_json
+    def to_hash
       @hash.map do |id, values|
         {id: id, values: values}
       end
+    end
+    def from_hash(json)
+      json.each do |object|
+        self[object[:id]] = EntityValue.new object[:values]
+      end
+      self
+    end
+    def self.from_hash(json)
+      self.new.from_hash json
     end
   end
 end
