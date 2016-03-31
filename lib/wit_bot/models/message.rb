@@ -2,6 +2,8 @@ module WitBot
   class Message
     attr_reader :thread, :text, :_text, :id, :sent, :_outcomes, :outcomes
 
+    attr_accessor :meta
+
     def initialize(thread=WitBot.thread, text, id: SecureRandom.uuid)
       @thread = thread
       @text = text
