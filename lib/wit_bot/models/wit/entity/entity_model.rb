@@ -8,7 +8,7 @@ module WitBot
       @role = role
       @raw = raw.with_indifferent_access
 
-      @value = case @raw[:type].to_sym
+      @value = case @raw[:type] && @raw[:type].to_sym
                when :value
                  @raw[:value].to_s
                else
