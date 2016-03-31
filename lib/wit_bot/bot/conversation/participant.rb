@@ -13,8 +13,8 @@ module WitBot
           true
         end
 
-        def send_message(text)
-          @conversation.send_message text, self
+        def send_message(text, meta=nil)
+          @conversation.send_message text, self, meta
         end
         
         # Alias is deprecated.

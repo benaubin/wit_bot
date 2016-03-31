@@ -16,12 +16,13 @@ module WitBot
           thread.messages_list user, bot
         end
 
-        def send_message(text, sender=nil)
-          sender && sender.bot? ? output(text) : input(text)
+        def send_message(text, sender=nil, meta=nil)
+          sender && sender.bot? ? output(text, meta) : input(text, meta)
         end
 
-        def input(input)
+        def input(input, meta=nil)
           message = thread.create_message input
+          message.meta = meta
           message.send 1, false
           changed
           notify_observers :input, message
@@ -32,8 +33,9 @@ module WitBot
           listener_class.new self
         end
 
-        def output(text)
+        def output(text, meta=nil)
           message = thread.create_bot_message text
+          message.meta = meta
           changed
           notify_observers :output, message
           message
