@@ -54,7 +54,7 @@ module WitBot
       @messages = WitBot::Message.many_from_hash(self, m[:user])
       @bot_messages = WitBot::Message.many_from_hash(self, m[:bot])
 
-      @context = Context.from_hash json[:context]
+      @context = Context.from_hash json[:context] if json[:context]
       @metadata = json[:metadata]
       self
     end
