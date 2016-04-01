@@ -1,6 +1,30 @@
 module WitBot
+  class EntityModelProxy < HashWithIndifferentAccess
+    attr_reader :raw
+
+    def initialize(raw_entities)
+      @raw = raw_entities
+
+      super Hash[*raw_entities.map do |(role, all)|
+        all = all.map { |data| WitModel::Entity.find(data[:entity], create: false).model role, data }
+
+        data = all.first
+
+        data.all = all
+
+        create_getter role
+
+        [role, data]
+      end.flatten]
+    end
+
+    private
+    def create_getter(var)
+      self.class.send(:define_method, var, -> { self[var] })
+    end
+  end
   class EntityModel
-    attr_accessor :others
+    attr_accessor :all
     attr_reader :entity, :role, :raw, :value
 
     def initialize(entity, role, raw)
@@ -16,6 +40,10 @@ module WitBot
                end
 
       @others = []
+    end
+
+    def others
+      all - [self]
     end
 
     def to_s
