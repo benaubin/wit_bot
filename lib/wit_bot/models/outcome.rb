@@ -18,5 +18,14 @@ module WitBot
     def low_confidence?
       @confidence < WitBot.config.minimum_confidence
     end
+
+    def ==(other)
+      self.message == other.message &&
+          self.raw == other.raw &&
+          self._text == other._text &&
+          self.confidence == other.confidence &&
+          self.intent == other.intent &&
+          self.entities == other.entities
+    end
   end
 end

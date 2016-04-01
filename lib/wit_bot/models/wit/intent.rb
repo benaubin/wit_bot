@@ -26,6 +26,10 @@ module WitBot
         @@intents[name] || self.new(name, request: true)
       end
 
+      def ==(other)
+        self.name == other.name
+      end
+
       protected
 
       def process_expressions(expressions)

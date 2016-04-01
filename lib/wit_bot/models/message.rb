@@ -79,5 +79,16 @@ module WitBot
     def outcome
       outcomes.first
     end
+
+    def ==(other)
+      self.text == other.text &&
+          self._text == other._text &&
+          self.id == other.id &&
+          self.bot? == other.bot? &&
+          self.sent == other.sent &&
+          self._outcomes == other._outcomes &&
+          self.thread.equals_without_messages(other.thread) &&
+          self.outcomes == other.outcomes
+    end
   end
 end

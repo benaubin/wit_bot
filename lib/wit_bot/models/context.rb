@@ -31,8 +31,16 @@ module WitBot
       @location = h[:location]
       self
     end
+
     def self.from_hash(json)
       self.new.from_hash json
+    end
+
+    def ==(other)
+      self.state == other.state &&
+          self.reference_time == other.reference_time &&
+          self.entities == other.entities &&
+          self.location == other.location
     end
   end
 end

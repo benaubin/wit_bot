@@ -26,6 +26,10 @@ module WitBot
         @@entities[name] || create && Entity.new(id: name, request: true)
       end
 
+      def ==(other)
+        self.name == other.name
+      end
+
       protected
 
       def process_values(values)

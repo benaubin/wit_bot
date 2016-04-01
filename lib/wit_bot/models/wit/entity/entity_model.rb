@@ -46,6 +46,10 @@ module WitBot
       all - [self]
     end
 
+    def ==(other)
+      self.entity == other.entity && self.value == other.value
+    end
+
     def to_s
       value.to_s
     end

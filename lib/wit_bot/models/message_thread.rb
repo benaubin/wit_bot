@@ -63,5 +63,13 @@ module WitBot
       json = json.with_indifferent_access
       self.new(json[:id]).from_hash json
     end
+
+    def ==(other)
+      self.id == other.id &&
+          self.context == other.context &&
+          self.bot_messages == other.bot_messages &&
+          self.messages == other.messages &&
+          self.metadata == other.metadata
+    end
   end
 end

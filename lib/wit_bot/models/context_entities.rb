@@ -26,5 +26,9 @@ module WitBot
     def self.from_hash(json)
       self.new.from_hash json
     end
+
+    def ==(other)
+      self.id == other.id && self.values == other.values
+    end
   end
 end
