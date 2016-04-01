@@ -51,7 +51,7 @@ RSpec.describe WitBot::Message do
 
   describe '#send' do
     it 'returns itself' do
-      expect(@message.send).to eq(@message)
+      expect(@message.send).to be(@message)
     end
     it 'can be sent' do
       expect(@message.send).to eq(@message)
