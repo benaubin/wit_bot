@@ -60,6 +60,7 @@ module WitBot
     end
 
     def self.from_hash(json)
+      json = json.with_indifferent_access
       self.new(json[:id]).from_hash json
     end
   end

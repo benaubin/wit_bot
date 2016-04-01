@@ -36,6 +36,7 @@ module WitBot
       self
     end
     def self.from_hash(thread, id, json)
+      json = json.with_indifferent_access
       return Bot::Message.from_hash thread, id, json if json[:bot]
       self.new(thread, json[:text], id: id).from_hash json
     end
