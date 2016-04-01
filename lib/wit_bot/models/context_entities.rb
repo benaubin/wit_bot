@@ -1,5 +1,8 @@
 module WitBot
   class ContextEntities
+    attr_reader :id
+    attr_accessor :values
+
     def initialize
       @hash = {}
     end
