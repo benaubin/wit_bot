@@ -18,7 +18,7 @@ module WitBot
     def messages_list(user: true, bot: false)
       bot_messages = bot ? @bot_messages.values : []
       user_messages = user ? @messages.values : []
-      bot_messages + user_messages
+      user_messages + bot_messages
     end
 
     def create_message(text, id=SecureRandom.uuid)
