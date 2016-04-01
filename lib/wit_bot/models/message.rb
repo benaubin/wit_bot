@@ -68,7 +68,7 @@ module WitBot
     end
 
     def parse_outcomes(outcomes=@_outcomes)
-      outcomes.each_with_index.map { |outcome, i| Outcome.new self, outcome, i }
+      outcomes.each_with_index.map { |outcome, i| Outcome.new self, outcome, i } if outcomes
     end
 
     def parse_outcomes!(outcomes=@_outcomes)
