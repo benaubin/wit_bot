@@ -93,7 +93,7 @@ RSpec.describe WitBot::Message do
 
       new = WitBot::Message.from_hash thread, id, hash
 
-      expect(new._outcomes).to eq(message._outcomes)
+      expect(new).to eq(message)
     end
   end
 end
