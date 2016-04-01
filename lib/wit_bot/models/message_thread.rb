@@ -71,5 +71,11 @@ module WitBot
           self.messages == other.messages &&
           self.metadata == other.metadata
     end
+
+    def equals_without_messages(other)
+      self.id == other.id &&
+          self.context == other.context &&
+          self.metadata == other.metadata
+    end
   end
 end
