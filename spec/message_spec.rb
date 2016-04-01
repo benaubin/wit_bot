@@ -54,7 +54,7 @@ RSpec.describe WitBot::Message do
       expect(@message.send).to be(@message)
     end
     it 'can be sent' do
-      expect(@message.send).to eq(@message)
+      @message.send
       expect(@message.outcome).to be(@message.outcomes.first)
       expect(@message.outcome).to be_a(WitBot::Outcome)
     end
