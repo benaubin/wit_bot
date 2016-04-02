@@ -52,7 +52,7 @@ message = nil
 
 if repl
   begin
-    puts 'Starting Wit REPL:'
+    puts "Starting Wit REPL v#{WitBot::VERSION}:"
     loop do
       print 'wit > '
 
