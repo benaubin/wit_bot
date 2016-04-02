@@ -18,6 +18,10 @@ module WitBot
       end.flatten]
     end
 
+    def method_missing(*_)
+      nil
+    end
+
     private
     def create_getter(var)
       self.class.send(:define_method, var, -> { self[var] })
