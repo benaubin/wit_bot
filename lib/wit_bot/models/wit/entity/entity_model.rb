@@ -5,17 +5,19 @@ module WitBot
     def initialize(raw_entities)
       @raw = raw_entities
 
-      super Hash[*raw_entities.map do |(role, all)|
-        all = all.map { |data| WitModel::Entity.find(data[:entity], create: false).model role, data }
+      super Hash[raw_entities.map do |(role, all)|
+        all = all.map do |data|
+          entity_name = data[:entity] || role
+          entity = WitModel::Entity.find(entity_name, create: false)
+          entity.model role, data
+        end
 
-        data = all.first
-
-        data.all = all
+        data = all.length == 1 ? all.first : all
 
         create_getter role
 
         [role, data]
-      end.flatten]
+      end]
     end
 
     def method_missing(*_)
