@@ -1,0 +1,8 @@
+Description:
+    Sets up an initializer for wit_bot.
+
+Example:
+    rails generate wit_bot:setup
+
+    This will create:
+        config/initializers/wit_bot.rb

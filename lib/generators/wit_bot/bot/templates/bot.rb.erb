@@ -1,0 +1,19 @@
+class <%=class_name%>Bot < WitBot::Bot::Base
+  # Set the intents your app listens to:
+<% if intents && !intents.empty? %>
+  intents <%= intents.map{|i| ":#{i.to_s}"}.join(', ') %>
+
+  <% intents.each do |intent| %>
+  # When the <%= intent %> intent is received...
+  def on_<%= intent %>(message)
+    # Do something
+  end
+  <% end %>
+<% else %>
+  # intents :example_intent, :example2 ...
+
+  # def on_example_intent(message)
+  #   # do something
+  # end
+<% end %>
+end
