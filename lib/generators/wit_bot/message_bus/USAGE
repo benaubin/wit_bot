@@ -1,8 +1,15 @@
 Description:
-    Sets up an initializer for wit_bot.
+    Sets up a message participant for using message_bus to transmit messages to web clients.
 
 Example:
-    rails generate wit_bot:setup
+    All commands below are equivalent:
+
+        rails generate wit_bot:message_bus Bot
+        rails generate wit_bot:message_bus Bot User
+        rails generate wit_bot:message_bus Bot User /witbot
 
     This will create:
-        config/initializers/wit_bot.rb
+
+        app/wit_bot/message_bus_listener.rb
+        app/controllers/message_bus_controller.rb
+        app/jobs/message_bus_job.rb

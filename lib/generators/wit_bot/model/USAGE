@@ -1,8 +1,14 @@
 Description:
-    Sets up an initializer for wit_bot.
+    Create a model to store conversations in ActiveRecord belonging to a user.
 
 Example:
-    rails generate wit_bot:setup
+    Both commands are equivalent:
+
+        rails generate wit_bot:model
+        rails generate wit_bot:model User
 
     This will create:
-        config/initializers/wit_bot.rb
+
+        db/migrate/create_conversations.rb
+        app/models/conversation.rb
+

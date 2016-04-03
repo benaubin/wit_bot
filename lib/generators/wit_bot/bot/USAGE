@@ -1,8 +1,16 @@
 Description:
-    Sets up an initializer for wit_bot.
+    Creates a bot for use with wit_bot.
 
 Example:
-    rails generate wit_bot:setup
+
+    To generate without intents:
+
+        rails generate wit_bot:bot BotName
+
+    To include intents:
+
+        rails generate wit_bot:bot BotName intent1 intent2 ...
 
     This will create:
-        config/initializers/wit_bot.rb
+    
+        app/wit_bot/bot_name_bot.rb

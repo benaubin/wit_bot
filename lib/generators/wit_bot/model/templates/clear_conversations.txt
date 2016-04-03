@@ -1,0 +1,5 @@
+If you're thinking that storing conversations will take up a lot of room in your database,
+you are correct. You'll want to destroy inactive conversations from the database every few hours.
+Here's the guide on setting up a job to clear old conversations with Clockwork:
+
+https://github.com/penne12/wit_bot/wiki/Clear-Old-Conversations-in-ActiveRecord-with-Clockwork-and-ActiveJob
