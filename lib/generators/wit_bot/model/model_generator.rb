@@ -11,7 +11,7 @@ module WitBot
         template 'model.rb.erb', 'app/models/conversation.rb'
 
         user_file = "app/models/#{user_lower}.rb"
-        inject_into_class user_file, user_model, 'has_one :conversation, dependent: :destroy'
+        inject_into_class user_file, user_model, "  has_one :conversation, dependent: :destroy\n"
       end
     end
   end
