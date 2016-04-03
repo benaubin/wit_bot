@@ -1,0 +1,12 @@
+class MessageBusController < ApplicationController
+  <% if defined? Doorkeeper %>
+  before_action(only: [:send_message]){ doorkeeper_authorize! }
+  <% else %>
+  before_action :authorize!, only: [:send_message] # Replace with your authentication logic
+  <% end %>
+
+  def send_message
+    MessageBusJob.perform_later current_<%= user_model.underscore %>.id, params[:text] # Enqueue
+    head :accepted # Respond the with the HTTP Accepted status code.
+  end
+end

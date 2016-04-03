@@ -1,0 +1,45 @@
+class MessageBusListener < WitBot::Bot::Conversation::Participant
+  attr_accessor :conversation_model, <%= ":#{user_lower}" %>
+
+  # Initialize the conversation, set the local <%= user_lower %>, and add the bot to the message
+  def initialize(conversation, <%= user_lower %>)
+    # Send the conversation object to the parent class
+    super conversation.object
+
+    # Set instance variables (@conversation is the actual conversation object)
+    <%= "@#{user_lower} = #{user_lower}" %>
+    @conversation_model = conversation
+
+    # Add the bot to the conversation
+    <%= "#{bot_name}." %>new @conversation<%= ", @#{user_lower}" %>
+  end
+
+  # A method that saves the conversation.
+  def save
+    @conversation_model.object = @conversation
+    @conversation_model.save
+  end
+
+  class << self
+    # A method to retrieve a listener from a <%= user_lower %>.
+    def from_<%= user_lower %>(<%= user_lower %>)
+      unless <%= "#{user_lower}." %>conversation # If the <%= user_lower %> doesn't have a conversation...
+        # Create one
+        <%= "#{user_lower}." %>conversation = Conversation.new
+        <%= user_lower %>.save! # Save the <%= user_lower %>
+      end
+      MessageBusListener.new <%= "#{user_lower}." %>conversation, <%= "#{user_lower}." %>to_s # Create a new listener from the conversation and the <%= user_lower %>.
+    end
+  end
+
+  def bot?
+    false # Tell wit_bot that this class handles messages for a user.
+  end
+
+  # A method that gets called on output of a message automatically by wit_bot
+  def on_output(message)
+    save # Once we output a message, save the <%= user_lower %>.
+    msg_hash = {text: message.text, bot: message.bot?} # Create a hash to send to the <%= user_lower %>
+    MessageBus.publish '<%= bot_channel %>', msg_hash, user_ids: [<%= "@#{user_lower}." %>id] # Send the message to the <%= user_lower %>.
+  end
+end

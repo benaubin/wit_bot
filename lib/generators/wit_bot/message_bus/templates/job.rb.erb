@@ -1,0 +1,13 @@
+class MessageBusJob < ActiveJob::Base
+  queue_as :high
+
+  def perform(<%= user_lower %>_id, text)
+    # Make sure the user still exists
+    if <%= "(#{user_lower} = #{user_model}.find_by_id #{user_lower}_id)" %>
+      # Get the listener
+      listener = MessageBusListener.from_<%= user_lower %> <%= user_lower %>
+      # And send the message
+      listener.send_message text
+    end
+  end
+end
