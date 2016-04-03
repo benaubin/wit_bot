@@ -16,6 +16,14 @@ module WitBot
 
         user_file = "app/models/#{user_lower}.rb"
         inject_into_class user_file, user_model, "  has_one :conversation, dependent: :destroy\n"
+
+        puts <<TEXT
+If you're thinking that storing conversations will take up a lot of room in your database,
+you are correct. You'll want to destroy inactive conversations from the database every few hours.
+Here's the guide on setting up a job to clear old conversations with Clockwork:
+
+https://github.com/penne12/wit_bot/wiki/Clear-Old-Conversations-in-ActiveRecord-with-Clockwork-and-ActiveJob
+TEXT
       end
     end
   end
