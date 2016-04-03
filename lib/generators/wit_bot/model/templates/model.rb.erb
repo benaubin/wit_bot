@@ -1,0 +1,16 @@
+class Conversation < ActiveRecord::Base
+  <%= "belongs_to :#{user_model.underscore}" %>
+  store :object, coder: JSON
+
+  def object
+    h = super # Get the hash from the parent method
+    if h && !h.empty? # If the hash exists and is not empty,
+      WitBot::Bot::Conversation::Base.from_hash h # Then create a conversation from it.
+    else
+      WitBot::Bot::Conversation::Base.new # Otherwise, create a new conversation.
+    end
+  end
+  def object=(conversation)
+    super conversation.as_json # Turn the conversation back into a hash.
+  end
+end
