@@ -1,5 +1,6 @@
 # WitBot
 
+[![GitHub stars](https://img.shields.io/github/stars/penne12/wit_bot.svg?style=flat-square?style=flat-square)](https://github.com/penne12/wit_bot)
 ![gem version](https://img.shields.io/gem/v/wit_bot.svg?style=flat-square)
 ![gem rank](https://img.shields.io/gem/rt/wit_bot.svg?style=flat-square)
 ![gem downloads](https://img.shields.io/gem/dt/wit_bot.svg?style=flat-square)
@@ -7,6 +8,15 @@
 A better [wit.ai] client for Ruby. Written in Ruby. With an api for creating bots. 
 
 Pretty Awesome™
+
+## We're on:
+
+| [Product Hunt] | [Hacker News] | [Reddit] |
+|----------------|---------------|----------|
+
+[Product Hunt]: https://www.producthunt.com/tech/witbot
+[Hacker News]: https://news.ycombinator.com/item?id=11411364
+[Reddit]: https://www.reddit.com/r/languagetechnology
 
 ## Installation
 
