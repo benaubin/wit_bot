@@ -6,8 +6,8 @@ module WitBot
       end
 
       class << self
-        @intents = []
         def intents(*args)
+          @intents ||= []
           if args.empty?
             @intents.map! do |intent|
               if intent.is_a? WitBot::WitModel::Intent
