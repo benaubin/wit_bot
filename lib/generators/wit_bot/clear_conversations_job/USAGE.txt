@@ -1,0 +1,11 @@
+Description:
+    Creates a job to clear old conversations.
+
+Example:
+
+    rails generate wit_bot:clear_conversations_job
+
+    This will create:
+
+        clock.rb
+        app/jobs/clear_conversations_job.rb
