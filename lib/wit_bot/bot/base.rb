@@ -6,10 +6,10 @@ module WitBot
       end
 
       class << self
-        @@intents = []
+        @intents = []
         def intents(*args)
           if args.empty?
-            @@intents.map! do |intent|
+            @intents.map! do |intent|
               if intent.is_a? WitBot::WitModel::Intent
                 intent
               else
@@ -17,7 +17,7 @@ module WitBot
               end
             end
           else
-            @@intents.concat args
+            @intents.concat args
           end
         end
       end
