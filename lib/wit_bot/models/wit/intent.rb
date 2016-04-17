@@ -23,7 +23,7 @@ module WitBot
       end
 
       def self.find(name)
-        @@intents[name] || self.new(name, request: true)
+        @@intents[name] || self.new(name)
       end
 
       def ==(other)

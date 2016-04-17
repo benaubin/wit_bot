@@ -23,7 +23,7 @@ module WitBot
       end
 
       def self.find(name, create=true)
-        @@entities[name] || create && Entity.new(id: name, request: true)
+        @@entities[name] || create && Entity.new(id: name)
       end
 
       def ==(other)
