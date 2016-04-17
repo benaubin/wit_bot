@@ -64,7 +64,7 @@ module WitBot
         @delete_listeners.all?{|listener| listener.call self}
       end
 
-      def get(data: request.get(all: false))
+      def get(data: {})
         from_response_data data
       end
 
