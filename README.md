@@ -9,6 +9,11 @@ A better [wit.ai] client for Ruby. Written in Ruby. With an api for creating bot
 
 Pretty Awesome™
 
+> **Warning:**
+> wit_bot does not currently work with the new stories api. If you have a new app, you WILL see errors.
+> I'll be trying to fix this in a week or two.
+> Currently, only old apps (those that still use intents and entities) are supported, and if they break, that is a bug that should be reported.
+
 ## We're on:
 
 | [Product Hunt] | [Hacker News] | [Reddit] |
